@@ -1,0 +1,25 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-default" (click)="goToUsers()"><span class="glyphicon glyphicon-chevron-left"></span> Go back</button>
+  <button type="button" class="btn btn-default" (click)="goToEdit()"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+</div>
+
+<div *ngIf="user" class="col-xs-12 well">
+  <div class="row">
+    <div class="col-md-1 col-sm-2 col-xs-3">
+      <img
+        *ngIf="user.photo; else elsePhoto"
+        class="img-circle"
+        src="{{ user.photo }}"
+        alt="{{ user.firstName }} {{ user.surname }}"
+      >
+      <ng-template #elsePhoto>
+        <div class="placeholder img-circle"></div>
+      </ng-template>
+    </div>
+
+    <div class="col-md-11 col-sm-10 col-xs-9">
+      <h3>{{ user.firstName }} {{ user.surname }}</h3>
+      Country: {{ user.country }}
+    </div>
+  </div>
+</div>

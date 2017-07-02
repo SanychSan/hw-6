@@ -1,0 +1,71 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-default" (click)="goToUsers()"><span class="glyphicon glyphicon-chevron-left"></span> Go back</button>
+</div>
+
+<form *ngIf="user" #form="ngForm" (submit)="save(form)">
+  <div
+    class="form-group"
+    [ngClass]="{'has-error has-feedback': name.errors && (name.dirty || name.touched)}"
+  >
+    <input
+      type="text"
+      class="form-control"
+      [ngModel]="user.firstName"
+      #name="ngModel"
+      name="firstName"
+      minlength="1"
+      maxlength="24"
+      required
+    >
+    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  </div>
+  <div
+    class="form-group"
+    [ngClass]="{'has-error has-feedback': surname.errors && (surname.dirty || surname.touched)}"
+  >
+    <input
+      type="text"
+      class="form-control"
+      [ngModel]="user.surname"
+      #surname="ngModel"
+      name="surname"
+      minlength="1"
+      maxlength="24"
+      required
+    >
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  </div>
+  <div
+    class="form-group"
+    [ngClass]="{'has-error has-feedback': country.errors && (country.dirty || country.touched)}"
+  >
+    <input
+      type="text"
+      class="form-control"
+      [ngModel]="user.country"
+      name="country"
+      #country="ngModel"
+      minlength="2"
+      maxlength="3"
+      required
+    >
+    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  </div>
+  <div
+    class="form-group"
+    [ngClass]="{'has-error has-feedback': email.errors && (email.dirty || email.touched)}"
+  >
+    <input
+      type="email"
+      class="form-control"
+      [ngModel]="user.email"
+      name="email"
+      #email="ngModel"
+      pattern="^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$"
+      appEmailValidator
+      required
+    >
+    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  </div>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>
